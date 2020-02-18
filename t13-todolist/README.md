@@ -1,3 +1,14 @@
+## Exercise 13 (Todolist with delete)
+Add delete button to your todo list table that deletes todo item
+Hints:
+
+Create a new function that is called when button is pressed. 
+Set button’s id to row index which can be then used in function to delete correct item.
+You can use filter() method to delete one item from the array todos.filter((todo, i) => i !== index)
+
+
+## --------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
