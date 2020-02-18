@@ -1,0 +1,88 @@
+<!-- Fetch astronomy picture of the day from NASA API -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React Weather App</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+      function RestWeather() {
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather";
+        const apiKey = "0779194b11f7ac3e695b30f6350e170a";
+
+        let [city, setCity] = React.useState('');
+        let [new_city, setNewCity] = React.useState('');
+        
+        const [temp, setTemp] = React.useState('');
+        const [weather, setWeather] = React.useState('');
+        const [icon_url, setIconUrl] = React.useState('');
+        const [isReady, setReady] = React.useState(false);
+        
+        async function fetchAPIdata() {
+            var apiRequestUri = "";
+            console.log("city stored: " + city);
+            apiRequestUri= apiUrl + '?q=' + city + '&APPID=' + apiKey;
+            console.log("api Request Uri: " + apiRequestUri);
+            const res = await fetch(apiRequestUri);
+            res
+            .json()
+            .then(json => {
+                console.log("json data");
+                console.log(json);
+                var celcius = Math.round(parseFloat(json.main.temp)-273.15);
+                setTemp(celcius+" °C");
+                setWeather(json.weather[0].description);
+                var iconCode = json.weather[0].icon;
+                var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+                setIconUrl(iconUrl);
+                setReady(true);
+            })
+            .catch(error => console.error(error));
+        }
+
+        React.useEffect(() => {
+            console.log("initial weather info loading");
+            city = "London";
+            setCity("London");
+            fetchAPIdata();
+        }, [])
+
+        function buttonClick() {
+            console.log("button clicked for weather info");
+            console.log("city input: " + new_city);
+            //city = new_city;
+            //setCity(new_city);
+            city = "Sydney";
+            setCity(city);
+            fetchAPIdata();
+        }
+
+        if (!isReady) {
+          return <p>Loading weather app...</p>
+        }
+
+        return (
+          <div>
+            <h2>Weather info app</h2>
+            <button onClick={buttonClick}>Click to get weather</button>
+            <input name="city_input" type="text" value={city} />
+            <p>Location: {city}</p>
+            <p>Temperature: {temp}</p>
+            <p>Weather: {weather}</p>
+            <img src={icon_url} />
+          </div>
+        );
+      };
+
+      ReactDOM.render(<RestWeather />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

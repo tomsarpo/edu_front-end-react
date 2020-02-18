@@ -1,0 +1,60 @@
+<!-- Fetch astronomy picture of the day from NASA API -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>React NASA APOD</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+      function RestWeather() {
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather";
+        const apiKey = "0779194b11f7ac3e695b30f6350e170a";
+        const city = "London"
+
+        const [temp, setTemp] = React.useState('');
+        const [weather, setWeather] = React.useState('');
+        const [icon_url, setIconUrl] = React.useState('');
+        const [isReady, setReady] = React.useState(false);
+        
+        React.useEffect(() => {
+          fetch(apiUrl + '?q=' + city + '&APPID=' + apiKey)
+          .then(response => response.json()) 
+          .then(json => {
+            console.log("json data");
+            console.log(json);
+            var celcius = Math.round(parseFloat(json.main.temp)-273.15);
+            setTemp(celcius+" °C");
+            setWeather(json.weather[0].description);
+            var iconCode = json.weather[0].icon;
+            var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+            setIconUrl(iconUrl);
+            setReady(true);
+          });
+        }, [])
+
+        if (!isReady) {
+          return <p>Loading weather app...</p>
+        }
+
+        return (
+          <div>
+            <h2>Weather info: London</h2>
+            <p>Temperature: {temp}</p>
+            <p>Weather: {weather}</p>
+            <img src={icon_url} />
+          </div>
+        );
+      };
+
+      ReactDOM.render(<RestWeather />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
