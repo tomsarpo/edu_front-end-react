@@ -1,3 +1,16 @@
+## T17
+
+React-table with states and hooks
+
+Use todolist from the previous exercise. Use react-table component in the todolist table.
+Hints: 
+
+- See how to render other elements to table cell from https://react-table.js.org/#/story/cell-renderers-custom-components
+
+- Use Cell renderer and current row number = row.index
+
+------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
