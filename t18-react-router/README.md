@@ -1,3 +1,12 @@
+##Exercise 13:
+Create three components Home, About and Contact and create menu for these using
+React Router using examples in the previous slides. Home page is the default page
+that is shown initially.
+
+
+
+
+------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
