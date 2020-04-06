@@ -7,8 +7,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
-import * as moment from 'moment';
-import 'moment/locale/fi';
 
 import AddCustomer from './AddCustomer'
 import EditCustomer from './EditCustomer'
@@ -27,6 +25,8 @@ export default function CustomerList() {
             return response.json();
           })
         .then(responseData => {
+            console.log("customers - responseData");
+            console.log(responseData);
             setCustomers(responseData.content);
             console.log("customers - responseData.content");
             console.log(responseData.content);
@@ -64,8 +64,6 @@ export default function CustomerList() {
     }
 
     const save_Customer = (customer) => {
-        console.log("save_Customer");
-        console.log(customer);
         fetch('https://customerrest.herokuapp.com/api/customers', {
             method: 'POST',
             headers:  {'Content-Type': 'application/json'},
@@ -76,9 +74,6 @@ export default function CustomerList() {
     }
 
     const update_Customer = (customer, link) => {
-        console.log("update_Customer");
-        console.log(customer);
-        console.log(link);
         fetch(link, {
             method: 'PUT',
             headers:  {'Content-Type': 'application/json'},
@@ -89,8 +84,6 @@ export default function CustomerList() {
     }
 
     const save_CustomerTraining = (training) => {
-        console.log("save_CustomerTraining");
-        console.log(training);
         fetch('https://customerrest.herokuapp.com/api/trainings', {
             method: 'POST',
             headers:  {'Content-Type': 'application/json'},
@@ -167,52 +160,8 @@ export default function CustomerList() {
             Header: 'link',
             sortable: false,
             filterable: false,
-            width: 600,
             accessor: (row) => row.links[0].href,
-            style: { 'whiteSpace': 'unset' } // allow for words wrap inside only this cell
-        }
-    ]
-
-    const [trainings, setTrainings] = React.useState([]);
-    useEffect(() => fetchSubTableData(), []);
-
-    const fetchSubTableData = () => {
-        fetch('https://customerrest.herokuapp.com/gettrainings')
-        .then(response => {
-            return response.json();
-          })
-        .then(responseData => {
-            setTrainings(responseData); //store trainings as raw object
-            console.log("fetchSubTableData");
-            console.log(responseData);
-          })
-    }
-
-    const subTableColumns = [
-        {
-          Header: "",
-          accessor: "toggle",
-          width: 35
-        },
-        {
-            id: 'date',
-            Header: 'Date',
-            width: 150,
-            accessor: (row) => <span>
-                {moment(row.date).local().subtract(9, 'h').subtract(30, 'm').format('DD.MM.YYYY')} 
-                <br />
-                {moment(row.date).local().subtract(9, 'h').subtract(30, 'm').format('HH:mm a')}
-            </span>
-        },
-        {
-            Header: 'duration',
-            accessor: 'duration',
-            width: 150
-        },
-        {
-            Header: 'activity',
-            accessor: 'activity',
-            width: 250
+            style: { 'white-space': 'unset' } // allow for words wrap inside only this cell
         }
     ]
 
@@ -220,21 +169,7 @@ export default function CustomerList() {
     <div>
       <AddCustomer saveCustomerProp={save_Customer}/>
 
-      <ReactTable data={customers} columns={columns}
-        filterable={true} 
-        //onResizedChange={this.onResizedChange}
-        SubComponent={row => {
-            return (
-              <ReactTable
-                data={trainings}
-                columns={subTableColumns}
-                TheadComponent={() => null}
-                defaultPageSize={3}
-                showPagination={false}
-              />
-            );
-          }}
-      />
+      <ReactTable data={customers} columns={columns} filterable={true} />
       <Snackbar
             anchorOrigin={{
             vertical: 'bottom',
