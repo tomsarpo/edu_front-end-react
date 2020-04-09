@@ -5,9 +5,22 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { makeStyles } from '@material-ui/core/styles';
 import * as moment from 'moment';
 import 'moment/locale/fi';
 
+const useStyles = makeStyles((theme) => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+      width: 200,
+    },
+  }));
+  
 export default function AddTraining(props) {
     const [open, setOpen] = React.useState(false);
     const [training, setTraining] = React.useState({
@@ -15,13 +28,13 @@ export default function AddTraining(props) {
     })
     const [customerLink, setCustomerLink] = React.useState('');
     const [dateStr, setDateStr] = React.useState('');
-
+    const classes = useStyles();
 
     const handleClickOpen = () => {
         var idVal = '';
         var baseURL = 'https://localhost:8080/api/customers/'
 
-        var dateVal = '2020-04-07T23:30:00.000+0000';
+        var dateVal = moment.now(); //'2020-04-07T23:30:00.000+0000';
         console.log(dateVal);
         setDateStr( 
             moment(dateVal).subtract(9, 'h').subtract(30, 'm').format('DD.MM.YYYY') + ' ' 
@@ -39,9 +52,19 @@ export default function AddTraining(props) {
         setCustomerLink(idVal);
         setTraining({...training, ['customer']: idVal, ['date']: dateVal});
         setOpen(true);
-        console.log(training);
+        console.log(training); //has not been updated yet
     };
   
+    const setDateToTraining = (date) => {
+        console.log("setDateToTraining");
+        console.log(date);
+        let date_local = moment(date).local().utc();
+        console.log(date);
+        //setTraining({...training, ['date']: date_local});
+
+        //TODO: study ref use https://nozzlegear.com/blog/datepickerdialog-how-to-open-material-ui-s-datepicker-with-a-button-or-any-other-element
+    }
+
     const handleClose = () => {
       setOpen(false);
     };
@@ -67,17 +90,19 @@ export default function AddTraining(props) {
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">New training</DialogTitle>
             <DialogContent>
+                
                 <TextField
-                    autoFocus
-                    margin="dense"
-                    name="date"
-                    value={dateStr}
-                    label="date"
-                    //onChange={e => handleInputChange(e)}
-                    type="text"
-                    fullWidth
-                    readOnly="True"
+                    id="datetime-local"
+                    label="appointment date"
+                    type="datetime-local"
+                    defaultValue="2020-04-10T10:30"
+                    className={classes.textField}
+                    onAccept={date => setDateToTraining(date)}
+                    InputLabelProps={{
+                    shrink: true,
+                    }}
                 />
+                
                 <TextField
                     margin="dense"
                     name="duration"

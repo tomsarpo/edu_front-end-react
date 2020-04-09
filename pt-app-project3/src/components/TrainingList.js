@@ -97,13 +97,12 @@ export default function TrainingList() {
                 </span>,
             width: 350
         },
-        {
+        /*{
             Header: 'Update',
             sortable: false,
             filterable: false,
             width: 100,
-            //Cell: row => <EditCustomer customer={row.original} updatecustomer={update_Customer} />
-        },
+        },*/
         {
             id: 'col_del',
             Header: 'Delete',

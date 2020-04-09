@@ -11,6 +11,7 @@ import Container from '@material-ui/core/Container';
 
 import CustomerList from './components/CustomerList'
 import TrainingList from './components/TrainingList'
+import TrainingCalendar from './components/TrainingCalendar'
 
 export default function PTAppMain() {
   const [value, setValue] = useState('one');
@@ -83,9 +84,10 @@ export default function PTAppMain() {
       <Container maxWidth="xl">
         <div> &nbsp; </div>
         
+        {value === null && <div><h2>Personal Trainer app has your customers and event</h2><h4>Open Menu from left to browse.</h4></div>}
         {value === 1 && <div><CustomerList /></div>}
         {value === 2 && <div><TrainingList /></div>}
-        {value === 3 && <div>Show Calendar</div>}
+        {value === 3 && <div><TrainingCalendar /></div>}
 
         <hr  style={styles_hr}/>
         
