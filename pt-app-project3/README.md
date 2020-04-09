@@ -9,17 +9,17 @@ App has 4 main elements:
 - calendar page (functions: trainings month view, training event pop-up)
 
 ## Screenshots of the app
-<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-0-main.PNG" width="500"/>
-<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-0-main.menu.PNG" width="500"/>
-<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.PNG" width="500"/>
-<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.sort_filter.PNG" width="500"/>
-<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.addCustomer.PNG" width="500"/>
-<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.delete_confirm.PNG" width="500"/>
-<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.editCustomer.PNG" width="500"/>
-<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.Trainings_sub-list.PNG" width="500"/>
-<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.Trainings.Add.PNG" width="500"/>
-<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-3-calendar.PNG" width="500"/>
-<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-3-calendar.event.PNG" width="500"/>
+<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-0-main.PNG" width="800"/>
+<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-0-main.menu.PNG" width="800"/>
+<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.PNG" width="800"/>
+<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.sort_filter.PNG" width="800"/>
+<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.addCustomer.PNG" width="800"/>
+<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.delete_confirm.PNG" width="800"/>
+<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.editCustomer.PNG" width="800"/>
+<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.Trainings_sub-list.PNG" width="800"/>
+<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-1-customer.Trainings.Add.PNG" width="800"/>
+<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-3-calendar.PNG" width="800"/>
+<img src="https://github.com/tomsarpo/edu_front-end-react/blob/master/pt-app-project3/PT-v3-3-calendar.event.PNG" width="800"/>
 
 ## Available Scripts
 
