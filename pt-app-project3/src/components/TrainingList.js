@@ -136,7 +136,12 @@ export default function TrainingList() {
 
       
 
-      <ReactTable data={trainings} columns={columns} filterable={true}/>
+      <ReactTable 
+        data={trainings} 
+        columns={columns} 
+        filterable={true}
+        defaultPageSize={8}
+      />
       <Snackbar
             anchorOrigin={{
             vertical: 'bottom',

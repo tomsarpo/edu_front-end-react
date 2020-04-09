@@ -222,6 +222,7 @@ export default function CustomerList() {
 
       <ReactTable data={customers} columns={columns}
         filterable={true} 
+        defaultPageSize={10}
         //onResizedChange={this.onResizedChange}
         SubComponent={row => {
             return (

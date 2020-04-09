@@ -14,7 +14,7 @@ import TrainingList from './components/TrainingList'
 import TrainingCalendar from './components/TrainingCalendar'
 
 export default function PTAppMain() {
-  const [value, setValue] = useState('one');
+  const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -41,6 +41,14 @@ export default function PTAppMain() {
     backgroundColor: '#000000',
     borderColor:'#A2A2A2',
     margin:10
+  };
+
+  const styles_App_intro = {
+    color: '#fff',
+    backgroundColor: '#3f51b5',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    padding: '50px 150px'
   };
 
   return (
@@ -84,7 +92,9 @@ export default function PTAppMain() {
       <Container maxWidth="xl">
         <div> &nbsp; </div>
         
-        {value === null && <div><h2>Personal Trainer app has your customers and event</h2><h4>Open Menu from left to browse.</h4></div>}
+        {value === 0 && <div className="App-intro" style={styles_App_intro}>
+            <h2 className="App-intro">Personal Trainer app has your customers and event</h2><h4 className="App-intro">Open Menu from left to browse.</h4>
+        </div>}
         {value === 1 && <div><CustomerList /></div>}
         {value === 2 && <div><TrainingList /></div>}
         {value === 3 && <div><TrainingCalendar /></div>}
